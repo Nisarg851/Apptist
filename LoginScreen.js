@@ -1,6 +1,6 @@
-import React from 'react';
-import { View, Text, TextInput, Button, Alert } from 'react-native';
-import SignUpScreen from './signup';
+const React = require('react');
+const { View, Text, TextInput, Button, Alert } = require('react-native');
+const SignUpScreen = require('./signup');
 
 function App() {
   const handleSignUp = () => {
@@ -15,4 +15,4 @@ function App() {
   );
 }
 
-export default App;
+module.exports = App;

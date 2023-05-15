@@ -1,17 +1,21 @@
 import React from 'react';
-import { View, Text, TextInput, Button, Alert } from 'react-native';
-import SignUpScreen from './signup';
+
+import { Router, Routes, Route } from './Router';
+
+import Home from './components/Home/Home';
+import LoginScreen from './components/User/Login/Login';
+import SignUpScreen from './components/User/Registration/Signup';
+
 
 function App() {
-  const handleSignUp = () => {
-    // ... your sign-up logic here
-  };
-
   return (
-    <View>
-      <Text style={{ fontSize: 24, fontWeight: 'bold', marginBottom: 16 }}>Sign Up</Text>
-      <SignUpScreen />
-    </View>
+    <Router>
+      <Routes>
+        <Route path='/' Component={Home}/>
+        <Route path='/login' Component={LoginScreen}/>
+        <Route path='/signup' Component={SignUpScreen} />
+      </Routes>
+    </Router>
   );
 }
 

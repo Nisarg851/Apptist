@@ -1,12 +1,15 @@
-import {View, Text} from 'react-native';
-import { Link } from 'react-router-dom';
+import {View, Text, TouchableOpacity} from 'react-native';
+
+import styles from '../CommonComponentStyling/CommonStlyes';
 
 const Home = () => {
+
     return (
         <View>
             <Text>Home Page</Text>
-            <Link to="/login">Login</Link>
-            <Link to="/signup">Signup</Link>
+            <TouchableOpacity style={styles.primaryButton}>
+                <Text style={styles.primaryButtonText}>Sign out</Text>
+            </TouchableOpacity>
         </View>
     );
 }

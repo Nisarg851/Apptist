@@ -1,12 +1,26 @@
 import { useState } from 'react';
 import styles from '../../CommonComponentStyling/CommonStlyes';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Ionicons } from '@expo/vector-icons';
+
+import { Auth } from 'aws-amplify';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const navigateTo = useNavigate();
+
+  const loginUser = async () => {
+    try {
+      const user = await Auth.signIn(email, password);
+      console.log(user);
+      navigateTo('/');
+    } catch (err) {
+      console.log('error signing in', error);
+    }
+  }
 
   return (
     <View style={styles.container}>
@@ -38,7 +52,7 @@ const Login = () => {
             onChangeText={setPassword}
           />
         </View>
-        <TouchableOpacity style={styles.primaryButton} >
+        <TouchableOpacity style={styles.primaryButton} onPress={loginUser}>
           <Text style={styles.primaryButtonText}>Login</Text>
         </TouchableOpacity>
         <View style={[styles.horizontalContainer, {alignItems: 'center', marginVertical: 10}]}>
